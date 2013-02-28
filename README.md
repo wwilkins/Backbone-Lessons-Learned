@@ -1,4 +1,4 @@
-drunken-archer
+Backbone Lessons Learned Presentation
 ==============
 
-Greatest Repo Name Ever
+Check out the gh-pages branch for the examples and slides.
