@@ -8,9 +8,12 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
 
     <script type="text/javascript" src="javascripts/jquery.js"></script>
-    <script type="text/javascript" src="javascripts/lodash.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
     <script type="text/javascript" src="javascripts/backbone.js"></script>
-    <script type="text/javascript" src="javascripts/example1.js"></script>
+    <script type="text/javascript" src="javascripts/support/support.js"></script>
+    <script type="text/javascript" src="javascripts/support/observer.js"></script>
+    <script type="text/javascript" src="javascripts/support/composite_view.js"></script>
+    <script type="text/javascript" src="javascripts/example2.js"></script>
 
     <title>Backbone Lessons Learned by wwilkins</title>
   </head>
@@ -47,10 +50,11 @@
   <script>
   $(function () {
     window.divTarget = $('div#leaky');
+
     $('#append').click(function () {
       window.views = [];
       for(var i = 0; i < 1000; i++){
-        var aView = new MemoryLeakView();
+        var aView = new NoMemoryLeakView();
         aView.render();
         window.views.push(aView);
         window.divTarget.append($(aView.el));
@@ -60,11 +64,12 @@
 
     $('#remove').click(function () {
       _.forEach(window.views, function (view) {
-        view.remove();
+        view.leave();        
       });
       delete window.views;
       alert('views removed');
     });
+    
   });
   </script>
 

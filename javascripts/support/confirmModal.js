@@ -13,7 +13,7 @@ ConfirmModal = Support.CompositeView.extend({
   initialize: function (options) {
     _.extend(this, options);
     _.bindAll(this);
-    this.deferred = new $.Deferred();
+    this._deferred = new $.Deferred();
     this.promise = this.deferred.promise();
     this.render();
     return this;
